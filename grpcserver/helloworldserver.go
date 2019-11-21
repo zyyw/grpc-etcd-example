@@ -10,8 +10,8 @@ import (
 	"syscall"
 	"time"
 
-	grpclb "github.com/Bulesxz/balance"
-	"github.com/Bulesxz/balance/expample/pb"
+	grpclb "github.com/zyyw/grpc-etcd-example/balance"
+	"github.com/zyyw/grpc-etcd-example/expample/pb"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
