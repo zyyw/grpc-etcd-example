@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package soter_user;
+
+service UserService {
+    rpc Register (RegisterRequest) returns (RegisterResponse) {}
+    rpc GetUserUploadHistory (UploadHistoryRequest) returns (UploadHistoryResponse) {}
+    rpc GetUserDepositHistory (DepositHistoryRequest) returns (DepositHistoryResponse) {}
+    rpc GetUserOrderList(OrderListRequest) returns (OrderListResponse) {}
+    rpc SetUserAutopay (AutopayRequest) returns (AutopayResponse) {}
+    rpc UpdateUserInformation (UpdateInfoRequest) returns (UpdateInfoResponse) {}
+}
+
+message RegisterRequest {
+    string user_address = 1;
+}
+
+message RegisterResponse {
+    ReturnCode code = 1;
+    string message = 2;
+}
+
+message HistoryRequest {
+    string user_address = 1;
+    int64 start_unixtime = 2;
+    int64 end_unixtime = 3;
+    int32 offset = 4;
+    int32 limit = 5;
+}
+
+message UploadHistoryRequest {
+    HistoryRequest request = 1;
+}
+
+message UploadHistoryResponse {
+    ReturnCode code = 1;
+    string message = 2;
+
+    message UploadRecord {
+        string cid = 1;
+        string file_name = 2;
+        int64 file_size = 3;
+        string upload_time = 5;
+    }
+    repeated UploadRecord UploadRecordArray = 3;
+}
+
+message DepositHistoryRequest {
+    HistoryRequest request = 1;
+}
+
+message DepositHistoryResponse {
+    ReturnCode code = 1;
+    string message = 2;
+
+    message DepositRecord {
+        string tx_id = 1;
+        int64 balance = 2;
+        string block_timestamp = 3;
+    }
+    repeated DepositRecord DepositRecordArray = 3;
+}
+
+message OrderListRequest {
+    HistoryRequest request = 1;
+}
+
+message OrderListResponse {
+    ReturnCode code = 1;
+    string message = 2;
+
+    message OrderRecord {
+        string request_id = 1;
+        int64 fee = 2;
+        int64 save_time = 3;
+        string create_time = 4;
+        string status = 5;
+        string file_hash = 6;
+        string file_name = 7;
+        int64 file_size = 8;
+    }
+    repeated OrderRecord OrderRecordArray = 3;
+}
+
+message AutopayRequest {
+    string user_address = 1;
+    enum AutopayCode {
+        YES = 0;
+        NO = 1;
+    }
+    AutopayCode code = 2;
+}
+
+message AutopayResponse {
+    ReturnCode code = 1;
+    string message = 2;
+}
+
+message UpdateInfoRequest {
+    string user_address = 1;
+    string email = 2;
+    string phone_number = 3;
+}
+
+message UpdateInfoResponse {
+    ReturnCode code = 1;
+    string message = 2;
+}
+
+enum ReturnCode {
+    OK = 0;
+    INTERNAL_ERROR = 1;
+    REQUEST_PARAM_ILLEGAL = 2;
+    OTHER_ERROR = 99;
+}

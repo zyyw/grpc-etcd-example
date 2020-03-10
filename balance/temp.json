@@ -1,0 +1,14 @@
+{
+  "user_address": "TFNQJxHmWyRK4F1xYdSJ81KaZs8sKw5fe7",
+  "raw_data": [
+    {
+      "file_hash": "Qmej5PNoQwdSe6PwiurPGjQMjwrb9DFhxQJvsNhTCkFjmF",
+      "expiration_date": "2020-10-25"
+    },
+    {
+      "file_hash": "QmRyh5Ak5mh7Yht4Aftzt1nuVKdiZEHdFNWWDEAY1uQ8wE",
+      "expiration_date": "2020-10-25"
+    }
+  ],
+  "signature": "xxx"
+}
