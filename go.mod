@@ -30,5 +30,5 @@ require (
 	go.uber.org/zap v1.10.0 // indirect
 	golang.org/x/net v0.0.0-20190724013045-ca1201d0de80
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
-	google.golang.org/grpc v1.22.1
+	google.golang.org/grpc v1.26.0
 )
